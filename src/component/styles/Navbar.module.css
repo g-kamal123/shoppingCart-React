@@ -1,0 +1,39 @@
+.navbar{
+    background-image: url(/home/cedcoss/Shop_jwellery/public/banner1.png);
+    height: 20rem;
+    width: 100%;
+    border-bottom-left-radius: 100px;
+    /* border-bottom-right-radius: 100px; */
+}
+.navlinks{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 8%;
+    gap: 2rem;
+}
+.navlinks ul{
+    display: flex;
+    list-style: none;
+    gap: 7rem;
+}
+.navlinks a{
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.navbar .content{
+    display: flex;
+    /* justify-content: space-around; */
+    gap: 4rem;
+    padding: 0 8%;
+}
+.navbar .content div{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+}
+.navbar .content img{
+    height: 15rem;
+    width: 15rem;
+}

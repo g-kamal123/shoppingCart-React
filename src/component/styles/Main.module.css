@@ -1,0 +1,88 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.main .bestjewellery h1{
+    position: relative;
+}
+.main .bestjewellery{
+    /* grid-column: -1/1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 2rem; */
+}
+.main img{
+    border:30px solid #ebbf60;
+    border-radius: 200px;
+     height: 16rem;
+     width: 16rem;
+}
+.main .secondcontent{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.main .firstimg{
+    position: relative;
+}
+.main .firstimg span{
+    position: absolute;
+    bottom: 28%;
+    left: 22%;
+    color: whitesmoke;
+    text-transform: capitalize;
+}
+.main .secondcontent p,.firstcontent p{
+    text-transform: capitalize;
+    color: gray;
+    line-height: 2em;
+    width: 28rem;
+}
+.main .firstcontent,.secondcontent{
+    margin-top: 1%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 10%;
+    gap: 2rem;
+}
+.main .secondcontent button,.firstcontent button{
+     border: 2px solid #ebbf60;
+    background-color: black;
+    color: whitesmoke;
+    width: fit-content;
+    padding: 4% 8%;
+    border-radius: 27px;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    float: right; 
+    cursor: pointer;
+}
+.main .bestjewellery h1::after{
+    position: absolute;
+    content: "";
+    background: #ebbf60;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    bottom: 15%;
+    margin-left: 1%;
+}
+.main .bestjewellery h1::before{
+    position: absolute;
+    content: "";
+    background: #ebbf60;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    bottom: 18%;
+    left: -12%;
+    /* margin-right: 10%; */
+}
+.main .bestjewellery p{
+    text-align: center;
+    padding: 0 10%;
+    margin-top: 0;
+}
