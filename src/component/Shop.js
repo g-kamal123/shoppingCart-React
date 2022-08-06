@@ -1,4 +1,5 @@
 import React from 'react'
+import Cart from './Cart'
 import Main from './Main'
 import Navbar from './Navbar'
 import Products from './Products'
@@ -8,7 +9,8 @@ function Shop() {
     <div>
       <Navbar />
       {/* <Main /> */}
-      <Products />
+      {/* <Products /> */}
+      <Cart />
     </div>
   )
 }

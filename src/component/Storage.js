@@ -9,8 +9,9 @@ export const Storage = createContext();
 export const Context = (props) => {
   const [arr, setArr] = useState(Gold_array);
   const [printarr, setprintarr] = useState(Gold_array);
-  const [modalItem,setModalItem] = useState([])
-  const [error,setError] = useState(false)
+  const [modalItem, setModalItem] = useState([]);
+  const [error, setError] = useState(false);
+  const [cartArray,setCartArray] = useState({});
 
   useEffect(() => {
     const compare = (a, b) => {
@@ -21,7 +22,7 @@ export const Context = (props) => {
     setprintarr(arr1);
   }, [arr]);
   const filterHandler = () => {
-    var inp = document.getElementById('search').value;
+    var inp = document.getElementById("search").value;
     var gold = document.getElementById("gold").checked;
     var diamond = document.getElementById("diamond").checked;
     var gem = document.getElementById("gemstone").checked;
@@ -32,47 +33,122 @@ export const Context = (props) => {
     for (let i = 0; i < 4; i++) {
       if (selected[i]) arr1 = [...arr[i], ...arr1];
     }
-    if(document.getElementById('search').value!==''){
-        arr1 = arr1.filter((item)=>item.type.toLowerCase().includes(inp)
-        || item.name.toLowerCase().includes(inp))
+    if (document.getElementById("search").value !== "") {
+      arr1 = arr1.filter(
+        (item) =>
+          item.type.toLowerCase().includes(inp) ||
+          item.name.toLowerCase().includes(inp)
+      );
     }
     setArr(arr1);
-    if(!arr1.length && inp!=='') setError(true);
-    else
-    if (!arr1.length) {
-        setArr(Gold_array)
-    setError(false)};
+    if (!arr1.length && inp !== "") setError(true);
+    else if (!arr1.length) {
+      setArr(Gold_array);
+      setError(false);
+    }
   };
-  const exploreMorehandler=(val)=>{
+  const exploreMorehandler = (val) => {
     // console.log(val)
-    setModalItem([val])
-  }
-//   console.log(modalItem)
-  const searchHandler =(event)=>{
+    setModalItem([val]);
+  };
+  //   console.log(modalItem)
+  const searchHandler = (event) => {
     var gold = document.getElementById("gold").checked;
     var diamond = document.getElementById("diamond").checked;
     var gem = document.getElementById("gemstone").checked;
     var studded = document.getElementById("gold_studded").checked;
-    let arr =[]
-    if(gold || diamond || gem || studded){
-        let selected = [gold, diamond, gem, studded];
-        let arr2 = [Gold_array, Diamond_array, Gemstone_array, Studded_array];
-        for(let i =0;i<4;i++){
-            if(selected[i]) arr =[...arr2[i],...arr];
-        }
-    }
-    else
-    arr = [...Gold_array,...Diamond_array,...Gemstone_array,...Studded_array]
-    let inp = event.target.value
-    let arr1 = arr.filter((item)=> item.type.toLowerCase().includes(inp)
-    || item.name.toLowerCase().includes(inp))
-    setArr(arr1)
+    let arr = [];
+    if (gold || diamond || gem || studded) {
+      let selected = [gold, diamond, gem, studded];
+      let arr2 = [Gold_array, Diamond_array, Gemstone_array, Studded_array];
+      for (let i = 0; i < 4; i++) {
+        if (selected[i]) arr = [...arr2[i], ...arr];
+      }
+    } else
+      arr = [
+        ...Gold_array,
+        ...Diamond_array,
+        ...Gemstone_array,
+        ...Studded_array,
+      ];
+    let inp = event.target.value;
+    let arr1 = arr.filter(
+      (item) =>
+        item.type.toLowerCase().includes(inp) ||
+        item.name.toLowerCase().includes(inp)
+    );
+    setArr(arr1);
     if (!arr1.length) setError(true);
-    else setError(false)
+    else setError(false);
+  };
+  const addToCartHandler =(val)=>{
+    console.log(val)
+    var toAdd ={}
+    if(Object.keys(cartArray).length)
+    Object.keys(cartArray).map((item)=>{
+      if(item===val.id){
+        toAdd = {
+          id:val.id,
+          name:val.name,
+          price:val.price,
+          quantity:Number(cartArray[item].quantity) + 1,
+          image:val.image
+        }
+      }
+      else{
+        toAdd = {
+          id:val.id,
+          name:val.name,
+          price:val.price,
+          quantity:1,
+          image:val.image
+        }
+      }
+    })
+      else{
+        toAdd = {
+          id:val.id,
+          name:val.name,
+          price:val.price,
+          quantity:1,
+          image:val.image
+        }
+      }
+    // console.log(toAdd.name)
+    let arr = {...cartArray,[val.id]:toAdd}
+    // console.log(arr)
+    setCartArray(arr)
+  }
+  const decrementHandler =(val)=>{
+    let arr ={...cartArray}
+    if(arr[val].quantity>1)
+    arr[val].quantity -= 1
+    setCartArray(arr)
+  }
+  const incrementHandler =(val)=>{
+    let arr ={...cartArray}
+    arr[val].quantity += 1;
+    setCartArray(arr)
+  }
+  const deleteCartItem=(val)=>{
+    setCartArray(Object.keys(cartArray).filter((item)=>item!==val))
   }
   return (
     <Storage.Provider
-      value={{ arr: arr, printarr: printarr, filterHandler: filterHandler,exploreMorehandler:exploreMorehandler,modalItem:modalItem,searchHandler:searchHandler ,error:error}}
+      value={{
+        arr: arr,
+        printarr: printarr,
+        filterHandler: filterHandler,
+        exploreMorehandler: exploreMorehandler,
+        modalItem: modalItem,
+        searchHandler: searchHandler,
+        error: error,
+        addToCartHandler:addToCartHandler,
+        cartArray:cartArray,
+        incrementHandler:incrementHandler,
+        decrementHandler:decrementHandler,
+        deleteCartItem:deleteCartItem
+      }}
     >
       {props.children}
     </Storage.Provider>
