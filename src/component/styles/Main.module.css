@@ -86,3 +86,8 @@
     padding: 0 10%;
     margin-top: 0;
 }
+@media (max-width:760px){
+    .firstcontent p,.secondcontent p{
+        display: none;
+    }
+}

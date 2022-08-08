@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./styles/Main.module.css";
 
 function Main() {
+  const nav = useNavigate()
   return (
     <div className={classes.main}>
       <div className={classes.bestjewellery}>
@@ -23,7 +25,7 @@ function Main() {
             content of a page when looking at it's layout. The point of using
             Lorem
           </p>
-          <button>See More</button>
+          <button onClick={()=>nav('/products')}>See More</button>
         </div>
         <div className={classes.firstimg}>
           <img src="beimg.png" alt="" />
@@ -40,7 +42,7 @@ function Main() {
             content of a page when looking at it's layout. The point of using
             Lorem
           </p>
-          <button>See More</button>
+          <button onClick={()=>nav('/products')}>See More</button>
         </div>
         <div className={classes.firstimg}>
           <img src="beimg2.png" alt="" />
@@ -56,7 +58,7 @@ function Main() {
             content of a page when looking at it's layout. The point of using
             Lorem
           </p>
-          <button>See More</button>
+          <button onClick={()=>nav('/products')}>See More</button>
         </div>
         <div className={classes.firstimg}>
           <img src="beimg3.png" alt="" />

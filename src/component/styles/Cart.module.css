@@ -111,3 +111,30 @@
 .emptyCart button:hover{
     background-color: rgb(82, 6, 6);
 }
+.chkmodal{
+    background-color: whitesmoke;
+    padding: 2.5%;
+    width: fit-content;
+    margin-top: 25%;
+    margin-left: 35%;
+}
+@media (max-width:760px){
+    .cart{
+        flex-direction: column;
+    }
+    .cart .cartItems{
+        width: fit-content;
+        gap: 2rem;
+        padding-right: 2%;
+    }
+    .cartItems img{
+        width: 4rem;
+    }
+    .cartItems .textcontent span{
+        word-wrap: break-word;
+        width: 5rem;
+    }
+    .emptyCart{
+        width: 30rem;
+    }
+}

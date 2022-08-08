@@ -21,6 +21,7 @@
     cursor: pointer;
     text-decoration: none;
     text-transform: uppercase;
+    color: rgb(194, 5, 5);
 }
 .navbar .content{
     display: flex;
@@ -33,7 +34,18 @@
     flex-direction: column;
     font-size: 1.4rem;
 }
+.navbar .content span{
+    color: brown;
+}
 .navbar .content img{
     height: 15rem;
     width: 15rem;
+}
+@media (max-width:760px){
+    .navbar .content img{
+        display: none;
+    }
+    .navlinks ul{
+        gap: 1rem;
+    }
 }

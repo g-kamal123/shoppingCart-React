@@ -64,14 +64,16 @@
     position: relative;
 }
 .modal .content{
-    height: 28rem;
-    width: 48rem;
+    height: fit-content;
+    width: fit-content;
     position: absolute;
     background-color: whitesmoke;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 7%;
+    gap: 2rem;
 }
 .modal .content img{
     height: 15rem;
@@ -108,4 +110,9 @@
 }
 .modal .content .closemodal:hover{
     font-size: 5rem;
+}
+@media (max-width:760px){
+    .modal .content{
+        padding: 11% 5%;
+    }
 }

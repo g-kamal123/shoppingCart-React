@@ -131,8 +131,27 @@ export const Context = (props) => {
     setCartArray(arr)
   }
   const deleteCartItem=(val)=>{
-    setCartArray(Object.keys(cartArray).filter((item)=>item!==val))
+    // console.log(val)
+    let arr = {...cartArray}
+    let arr1 ={}
+    Object.keys(arr).map((item)=>{
+      if(item!==val){
+        let toAdd = {
+          id:arr[item].id,
+          name:arr[item].name,
+          price:arr[item].price,
+          quantity:arr[item].quantity,
+          image:arr[item].image
+        }
+        arr1 = {...arr1,[arr[item].id]:toAdd}
+      }
+    })
+    setCartArray(arr1)
   }
+  const checkoutHandler =()=>{
+    setCartArray({})
+  }
+  // console.log(cartArray)
   return (
     <Storage.Provider
       value={{
@@ -147,7 +166,8 @@ export const Context = (props) => {
         cartArray:cartArray,
         incrementHandler:incrementHandler,
         decrementHandler:decrementHandler,
-        deleteCartItem:deleteCartItem
+        deleteCartItem:deleteCartItem,
+        checkoutHandler:checkoutHandler
       }}
     >
       {props.children}

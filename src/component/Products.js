@@ -1,10 +1,12 @@
 import { Modal } from "@mui/material";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Storage } from "./Storage";
 import classes from "./styles/Products.module.css";
 
 function Products() {
   const details = useContext(Storage);
+  const nav = useNavigate()
   const [modal, setModal] = useState(false);
   const explore = (val) => {
     // console.log(val)
@@ -90,7 +92,7 @@ function Products() {
                 <button onClick={() => details.addToCartHandler(item)}>
                   add to cart
                 </button>
-                <button>Go to cart</button>
+                <button onClick={()=>nav('/cart')}>Go to cart</button>
               </div>
             </div>
           ))}
