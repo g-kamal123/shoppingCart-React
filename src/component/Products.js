@@ -1,4 +1,4 @@
-import { Modal } from "@mui/material";
+import { Alert, Modal } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Storage } from "./Storage";
@@ -6,6 +6,7 @@ import classes from "./styles/Products.module.css";
 
 function Products() {
   const details = useContext(Storage);
+  const [alert,setAlert] = useState(false)
   const nav = useNavigate();
   const [modal, setModal] = useState(false);
   const explore = (val) => {
@@ -107,7 +108,9 @@ function Products() {
             <div className={classes.content}>
               <div
                 className={classes.closemodal}
-                onClick={() => setModal(false)}
+                onClick={() => {
+                  setAlert(false)
+                  setModal(false)}}
               >
                 &times;
               </div>
@@ -116,10 +119,17 @@ function Products() {
                 <p>{item.id}</p>
                 <h4>{item.name}</h4>
                 <h4>&#8377;{item.price}</h4>
-                <button onClick={() => details.addToCartHandler(item)}>
+                <Alert severity= {alert? 'success':''}>
+                  {alert &&  <span>Added to cart</span>}
+                </Alert>
+                <button onClick={() => {
+                  setAlert(true)
+                  details.addToCartHandler(item)}}>
                   add to cart
                 </button>
-                <button onClick={() => nav("/cart")}>Go to cart</button>
+                <button onClick={() => {
+                  setAlert(false)
+                  nav("/cart")}}>Go to cart</button>
               </div>
             </div>
           ))}
