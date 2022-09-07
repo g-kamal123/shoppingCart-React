@@ -12,7 +12,34 @@ export const Context = (props) => {
   const [modalItem, setModalItem] = useState([]);
   const [error, setError] = useState(false);
   const [cartArray,setCartArray] = useState({});
+  const [logged,setLogged] = useState(false)
+  const [mode,setMode] = useState(false)
 
+  const inc =(a,b)=>{
+    return Number(a.price) - Number(b.price);
+  }
+  const dec =(a,b)=>{
+    return Number(b.price) - Number(a.price);
+
+  }
+  const htl =()=>{
+    let arr = [...printarr];
+    arr.sort(dec)
+    setprintarr(arr)
+  }
+  const lth =()=>{
+    let arr = [...printarr];
+    arr.sort(inc)
+    setprintarr(arr)
+  }
+  const background =(val)=>{
+    if(val)
+    setMode(true)
+    else setMode(false)
+  }
+  const login = ()=>{
+    setLogged(true)
+  }
   useEffect(() => {
     const compare = (a, b) => {
       return Number(a.price) - Number(b.price);
@@ -167,7 +194,13 @@ export const Context = (props) => {
         incrementHandler:incrementHandler,
         decrementHandler:decrementHandler,
         deleteCartItem:deleteCartItem,
-        checkoutHandler:checkoutHandler
+        checkoutHandler:checkoutHandler,
+        login:login,
+        logged:logged,
+        background:background,
+        mode:mode,
+        htl:htl,
+        lth:lth
       }}
     >
       {props.children}

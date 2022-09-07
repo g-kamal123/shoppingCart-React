@@ -118,6 +118,15 @@
     margin-top: 25%;
     margin-left: 35%;
 }
+.bckg h1{
+    color: aliceblue;
+}
+.bckg span{
+    color: black;
+}
+.bckg1 .textcontent span,.bckg1 .textcontent h2{
+    color: aliceblue;
+}
 @media (max-width:760px){
     .cart{
         flex-direction: column;

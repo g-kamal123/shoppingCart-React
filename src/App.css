@@ -3,4 +3,18 @@
 }
 body{
   margin: 0;
+  /* background-color: rgb(58, 75, 87); */
+  /* background-color: black; */
+  /* color: whitesmoke; */
+}
+.App{
+  background-color: rgb(58, 75, 87);
+  min-height: 100vh;
+  /* color: whitesmoke; */
+}
+.App span,.App p,.App h1{
+  color: aliceblue;
+}
+button{
+  cursor: pointer;
 }
